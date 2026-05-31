@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dokploy-crack
+  namespace: dokploy-crack
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+    # high performance settings for returning true at scale
+    nginx.ingress.kubernetes.io/proxy-body-size: "1m"
+    nginx.ingress.kubernetes.io/proxy-read-timeout: "60"
+    nginx.ingress.kubernetes.io/proxy-send-timeout: "60"
+    # enterprise grade TLS for enterprise grade true-returning
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - licenses-api.your-domain.com
+    secretName: dokploy-crack-tls
+  rules:
+  - host: licenses-api.your-domain.com
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: dokploy-crack
+            port:
+              name: http
