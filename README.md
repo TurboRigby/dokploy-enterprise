@@ -29,7 +29,7 @@ docker-compose up
 
 ### Kubernetes (if you're insane)
 ```bash
-kubectl apply -f k8s-deployment.yaml
+kubectl apply -f k8s/deployment.yaml
 ```
 
 and yes, the k8s manifest has:
