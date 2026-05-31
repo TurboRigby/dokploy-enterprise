@@ -37,7 +37,6 @@ and yes, the k8s manifest has:
 - **HorizontalPodAutoscaler** scaling up to 10 pods in case the load of returning true gets too heavy
 - **liveness and readiness probes** to make sure the JSON is still alive and well
 - **512Mi memory limit** which is coincidentally exactly what Dokploy uses at idle, for an app that uses 8MB
-- **ALL security capabilities dropped** to protect the most dangerous endpoint in existence
 - a dedicated **namespace** because this crack deserves isolation from lesser workloads
 
 an AI agent generated this manifest with the same energy as deploying a banking system. we kept it as-is for comedic and production purposes.
