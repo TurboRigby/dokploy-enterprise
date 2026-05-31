@@ -30,7 +30,7 @@ spec:
       containers:
       - name: app
         image: ghcr.io/turborigby/dokploy-enterprise:latest
-        imagePullPolicy: IfNotPresent
+        imagePullPolicy: Always
         ports:
         - name: http
           containerPort: 3000
@@ -61,14 +61,6 @@ spec:
           limits:
             cpu: 500m
             memory: 512Mi
-        securityContext:
-          runAsNonRoot: true
-          runAsUser: 1000
-          allowPrivilegeEscalation: false
-          readOnlyRootFilesystem: true
-          capabilities:
-            drop:
-            - ALL
 
 ---
 apiVersion: v1
