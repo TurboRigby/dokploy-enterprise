@@ -28,4 +28,6 @@ COPY --from=builder /app/main .
 
 EXPOSE 3000
 
+RUN chmod +x main
+
 CMD ["./main"]
